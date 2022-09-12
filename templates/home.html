@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Madlibs Home{% endblock%}
+
+{% block content %}
+<div class="row py-5">
+    <div class="col-2"></div>
+    <form action="/story" class="col-8">
+        {% for prompt in prompts %}
+        <div class="row align-items-center py-1">
+            <div class="col-3">
+                <label for='{{prompt}}'>
+                    {{prompt.title().replace('_', ' ')}}
+                </label>
+            </div>
+            <div class="col-9">
+                <input id='{{prompt}}' name='{{prompt}}' type="text" class="form-control" required>
+            </div>
+        </div>
+        {% endfor %}
+        <br>
+        <div class="row">
+            <div class="col-5"></div>
+            <button type="submit" class="btn btn-primary col-2">Submit</button>
+            <div class="col-5"></div>
+        </div>
+
+    </form>
+    <div class="col-2"></div>
+</div>
+
+{% endblock %}
